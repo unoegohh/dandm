@@ -1,0 +1,18 @@
+
+{#<li><a class="current" href="/">КОЛЛЕКЦИИ</a></li>#}
+{#<li><a href="/">КАТАЛОГ</a></li>#}
+{#<li><a href="/">ГДЕ КУПИТЬ</a></li>#}
+{#<li><a href="/">О НАС</a></li>#}
+{#<li><a href="/">КОНТАКТЫ</a></li>#}
+{#<li><a href="/">ОТЗЫВЫ</a></li>#}
+{% for menu in menuRender %}
+    <li><a href="/{{ menu.item.getUrl }}">{{ menu.item.getName }}</a>
+        {% if menu.child is defined %}
+            <ul>
+                {% for subitem in menu.child %}
+                    <li><a href="/{{ subitem.item.getUrl }}">{{ subitem.item.getName }}</a></li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    </li>
+{% endfor %}

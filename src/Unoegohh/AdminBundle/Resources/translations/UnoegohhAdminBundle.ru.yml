@@ -1,0 +1,90 @@
+Admin: Административная часть сайта
+
+breadcrumb.link_dashboard: Панель администрирования
+
+group:
+    staticPage: hhh
+    credit: Кредит
+    samo: САМО
+    static_page: Разделы сайта
+    news: Новости
+    article: Публикации
+    weather: Погода в городах
+    banners: Баннеры
+    clientdocs: Документы для клиентов
+    regionoffers: Предложения регионов
+    bonus: Бонус
+    feedback: Отзывы и предложения
+    sales_office: Офисы продаж
+    avia: Авиа
+    agency_site: Агентский сайт
+fos_user: Управление пользователями
+
+link_action_view: Просмотр раздела
+link_action_edit: Редактировать
+all_elements: Все элементы
+action_edit: Редактировать
+btn_preview: Предпросмотр
+form:
+    label_enabled: Спрятано
+    label_title: Загаловок страницы
+    label_url: Ссылка на страницу http://сайт/{ссылка}
+    label_content: Конетнт
+    label_name: Название
+    label_icon: Картинка
+    label_small_desc: Маленькое описание
+    label_descr: Описание
+    label_price: Цена
+    label_discount: Цена со скидкой
+    label_category: Категория
+    label_photos: Фотографии
+    label_position: Сортировка
+    label_eng_name: Название категории на английском
+    label_parent: Родительский элемент
+show:
+    label_enabled: Спрятано
+    label_title: Загаловок страницы
+    label_url: Ссылка на страницу http://сайт/{ссылка}
+    label_content: Конетнт
+    label_name: Название
+    label_small_desc: Маленькое описание
+    label_descr: Описание
+    label_price: Цена
+    label_discount: Цена со скидкой
+    label_category: Категория
+    label_photos: Фотографии
+    label_position: Сортировка
+    label_eng_name: Название категории на английском
+    label_parent: Родительский элемент
+list:
+    label_enabled: Спрятано
+    label_title: Загаловок страницы
+    label_url: Ссылка на страницу http://сайт/{ссылка}
+    label_content: Конетнт
+    label__action: Действия
+    label_name: Название
+    label_small_desc: Маленькое описание
+    label_descr: Описание
+    label_price: Цена
+    label_discount: Цена со скидкой
+    label_category: Категория
+    label_photos: Фотографии
+    label_position: Сортировка
+    label_eng_name: Название категории на английском
+    label_parent: Родительский элемент
+
+breadcrumb:
+    link_static_page_list: Список статичных страниц
+    link_category_list: Категории товаров
+    link_product_list: Список товаров
+    link_static_page_delete: Удаление статичной страницы
+    link_menu_list: Список разделов меню
+    link_menu_delete: Удаление раздела меню
+    link_category_delete: Удаление категории
+    link_product_delete: Удаление товара
+
+admin:
+    category: Категории
+    staticPage: Статичные страницы
+    product: Товар
+    menu: Меню

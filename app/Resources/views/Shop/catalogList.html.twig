@@ -1,0 +1,13 @@
+{% extends "::layout.html.twig" %}
+
+{% block content %}
+    <h1 id="catalogHeader">Каталог</h1>
+    <div id="catlogs_wrapper">
+        {% for catalog in catalogs %}
+            <div class="catalog_item">
+                <a href="{{ path('unoegohh_shop_catalog', {'name' : catalog.getEngName}) }}" style="background: url({% path catalog.icon , 'catalog_big'%}) center top;">{{ catalog.getName }}</a>
+            </div>
+        {% endfor %}
+        <div class="clear"></div>
+    </div>
+{% endblock %}

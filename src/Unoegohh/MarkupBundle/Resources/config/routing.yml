@@ -1,0 +1,16 @@
+unoegohh_markup_homepage:
+    pattern:  /
+    defaults: { _controller: UnoegohhMarkupBundle:Default:index }
+unoegohh_markup_form:
+    pattern:  /form
+    defaults: { _controller: UnoegohhMarkupBundle:Default:form }
+unoegohh_markup_cart:
+    pattern:  /cart
+    defaults: { _controller: UnoegohhMarkupBundle:Default:cart }
+unoegohh_markup_category:
+    pattern:  /category
+    defaults: { _controller: UnoegohhMarkupBundle:Default:category }
+
+unoegohh_markup_item:
+    pattern:  /item
+    defaults: { _controller: UnoegohhMarkupBundle:Default:item }

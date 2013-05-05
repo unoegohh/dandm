@@ -1,0 +1,81 @@
+{% extends "::layout.html.twig" %}
+
+{% block content %}
+    <h2>КОРЗИНА</h2>
+
+    <form action="">
+        <div class="wrapper">
+            <table class="table_form">
+                <tr>
+                    <td class="label">ИМЯ</td>
+                    <td class="input"><input type="text"></td>
+                </tr>
+                <tr>
+                    <td class="label">МОБ.ТЕЛЕФОН <span>*</span></td>
+                    <td class="input"><input type="text"></td>
+                </tr>
+                <tr>
+                    <td class="label">E-MAIL</td>
+                    <td class="input"><input type="text"></td>
+                </tr>
+                <tr>
+                    <td class="label">ОПЛАТА</td>
+                    <td class="input"><input type="text" value="Наличными" disabled=""></td>
+                </tr>
+                <tr>
+                    <td class="label">ДОСТАВКА</td>
+                    <td class="input"><input type="text"></td>
+                </tr>
+                <tr>
+                    <td class="label">ГОРОД</td>
+                    <td class="input"><input type="text" value="Москва" disabled=""></td>
+                </tr>
+                <tr>
+                    <td class="label">АДРЕС</td>
+                    <td class="input"><input type="text"></td>
+                </tr>
+                <tr>
+                    <td class="label">КОММЕНТАРИЙ</td>
+                    <td class="input"><input type="text"></td>
+                </tr>
+            </table>
+            <div class="additional_text">
+                <p>Доставка по Москве осуществляется нашей курьерской службой.</p>
+                <p>В пределах МКАД мы стараемся осуществить доставку в течение следующего рабочего дня после заказа. Если ваш заказ сделан в рабочее время, то в течение часа с вами обязательно свяжется наш оператор и предоставит Вам полную информацию по Вашему заказу. Если ваш заказ сделан позднее, то наши операторы свяжутся с вами в начале следующего рабочего дня.</p>
+            </div>
+            <div class="clear"></div>
+        </div>
+        <a id="clear_cart" href="#">ОЧИСТИТЬ КОРЗИНУ</a>
+        <span id="total_legend">ИТОГО:</span>
+        <span id="total_price">89 910 Р.</span>
+        <button>оформить заказ</button>
+        <div class="clear"></div>
+        <div class="wrapper" style="margin-top: 7px">
+            <table id="cart">
+                {% for i in range(0,2) %}
+                    <tr>
+                        <td>
+                            <img src="http://www.love-sl.ru/upload/iblock/f3e/DETAIL_PICTURE_15078.jpg" alt="">
+                        </td>
+                        <td class="description">
+                            СЕРЬГИ <br>
+                            <span>АРТИКУЛ: 15078</span>
+                        </td>
+                        <td class="count">
+                            <input type="text" size="1"> ШТ.
+                        </td>
+                        <td class="item_price">
+                            9990 Р.
+                        </td>
+                        <td class="items_price">
+                            89 910 Р.
+                        </td>
+                        <td>
+                            <a class="remove_item_from_cart" href="#"></a>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </table>
+        </div>
+    </form>
+{% endblock %}

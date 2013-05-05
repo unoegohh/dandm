@@ -1,0 +1,10 @@
+{% extends 'SonataAdminBundle::standard_layout.html.twig' %}
+
+{% block footer %}
+    <script type="text/javascript" src="/tinymce/js/tinymce/tinymce.min.js"></script>
+    <script type="text/javascript">
+        tinymce.init({
+            selector: ".tinymce"
+        });
+    </script>
+{% endblock %}

@@ -1,0 +1,10 @@
+.idea
+.vagrant
+app/cache
+app/config/parameters.yml
+app/logs
+vendor
+web/bundles
+web/sass/css
+web/sass/js
+web/uploads

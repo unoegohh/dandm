@@ -1,0 +1,7 @@
+parameters:
+#    unoegohh_user.example.class: Unoegohh\UserBundle\Example
+
+services:
+#    unoegohh_user.example:
+#        class: %unoegohh_user.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]

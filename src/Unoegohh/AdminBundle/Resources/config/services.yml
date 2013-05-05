@@ -1,0 +1,29 @@
+services:
+   Unoegohh.admin.admin.StaticPage:
+      class: Unoegohh\AdminBundle\Admin\StaticPageAdmin
+      calls:
+          - [setTranslationDomain, [UnoegohhAdminBundle]]
+      tags:
+        - { name: sonata.admin, manager_type: orm, group: group.staticPage, label: admin.staticPage, label_translator_strategy: sonata.admin.label.strategy.underscore }
+      arguments: [null,  Unoegohh\AdminBundle\Entity\StaticPage, UnoegohhAdminBundle:StaticPageAdmin]
+   Unoegohh.admin.admin.Category:
+      class: Unoegohh\AdminBundle\Admin\CategoryAdmin
+      calls:
+          - [setTranslationDomain, [UnoegohhAdminBundle]]
+      tags:
+        - { name: sonata.admin, manager_type: orm, group: group.items, label: admin.category, label_translator_strategy: sonata.admin.label.strategy.underscore }
+      arguments: [null,  Unoegohh\AdminBundle\Entity\Category, UnoegohhAdminBundle:CategoryAdmin]
+   Unoegohh.admin.admin.Product:
+      class: Unoegohh\AdminBundle\Admin\ProductAdmin
+      calls:
+          - [setTranslationDomain, [UnoegohhAdminBundle]]
+      tags:
+        - { name: sonata.admin, manager_type: orm, group: group.items, label: admin.product, label_translator_strategy: sonata.admin.label.strategy.underscore }
+      arguments: [null,  Unoegohh\AdminBundle\Entity\Product, UnoegohhAdminBundle:ProductAdmin]
+   Unoegohh.admin.admin.Menu:
+      class: Unoegohh\AdminBundle\Admin\MenuAdmin
+      calls:
+          - [setTranslationDomain, [UnoegohhAdminBundle]]
+      tags:
+        - { name: sonata.admin, manager_type: orm, group: group.menu, label: admin.menu, label_translator_strategy: sonata.admin.label.strategy.underscore }
+      arguments: [null,  Unoegohh\AdminBundle\Entity\Menu, UnoegohhAdminBundle:MenuAdmin]

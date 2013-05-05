@@ -1,0 +1,464 @@
+//@import "header.sass"
+$red: #ec1f27
+$grey: #777684
+$light-grey: #D1D1D1
+$grey-black: #414141
+
+body
+  padding: 0
+  color: $grey-black
+  margin: 0
+  font-family: Tahoma
+
+a
+  color: #448bc1
+  text-decoration: none
+  outline: none
+
+#header
+  width: 907px
+  margin:  0 auto 0 auto
+  height: 75px
+  #home_link
+    color: $red
+    padding: 20px 78px 0
+    margin:  0
+    display: inline-block
+    text-align: center
+    font-size: 28px
+    float: left
+    text-decoration: none
+    font-weight: bold
+  #phones
+    padding: 10px 0 0 0
+    float: left
+    width: 300px
+    p
+      margin: 0
+      color: $light-grey
+      font-size: 11px
+      span
+        font-size: 14px
+        color: $grey
+  #cart
+    float: left
+    width:  300px
+    font-size: 14px
+    text-align: right
+    color: $grey
+    p
+      padding: 0
+      margin: 10px 0 0 0
+    a
+      background: url("/images/icons/shopping_cart.png") no-repeat center top
+      display: inline-block
+      position: relative
+      width: 32px
+      height: 32px
+      top: 10px
+
+
+
+#menu
+  width: 907px
+  margin:  0 auto
+  height: 15px
+  text-align: justify
+  padding: 0
+  list-style-type: none
+  text-align-last: justify
+  text-justify: newspaper
+  border-bottom: 1px solid $light-grey
+  font-size: 10px
+  &:after
+    width: 100%
+    height: 0px
+    visibility: hidden
+    overflow: hidden
+    content: ''
+    display: inline-block
+  li
+    display: inline-block
+    vertical-align: top
+    text-align: left
+    position: relative
+    padding: 0 0 4px 0
+    a
+      text-decoration: none
+      color:  $grey
+      &.current
+        color: $red
+      &:hover
+        color: black
+    ul
+      display: none
+      position: absolute
+      top: 15px
+      left: -6px
+      background: white
+    &:hover ul
+      display: block
+      padding: 5px
+      margin: 0
+      border: 1px solid $light-grey
+      li
+        padding: 0
+        line-height: 20px
+        min-width: 50px
+        margin: 0
+        list-style-type: none
+        display: block
+        a
+          display: block
+
+#content
+  width: 907px
+  margin:  0 auto
+  padding: 0 0 10px 0
+  font-size: 12px
+  ul
+    padding: 0 0 0 17px
+#footer
+  width: 907px
+  padding: 10px 0 0 0
+  margin:  0 auto
+  height:  50px
+  border-top: 1px solid $light-grey
+  #sitemap
+    font-size: 10px
+    color: $grey
+  div
+    float: right
+    a
+      display: block
+      float: left
+
+
+
+h2
+  margin: 0 0 10px
+  font-weight: normal
+  font-size: 16px
+  color: #414141
+  text-transform: uppercase
+  line-height: 50px
+  padding: 0
+  margin: 0
+
+.wrapper
+  border: 6px solid #F6F6F6
+  margin: 0 0 10px 0
+  padding: 26px
+
+.clear
+  clear: both !important
+  float: none !important
+
+form
+  table
+    float: left
+    width: 434px
+    margin: 0 20px 0 0
+    display: block
+  .additional_text
+    float: left
+    width:  380px
+    font-size: 11px
+    color: #9896a1
+  .label
+    text-transform: uppercase
+    font-size: 14px
+    padding: 10px
+    display: block
+    width: 150px
+    color: #aeadb5
+    font-size: 14px
+    line-height: 14px
+  .input>input
+    border: 1px solid #CCC
+    font-size: 12px
+    color: #666666
+    padding: 5px
+    text-align: left
+    width: 248px
+  button
+    border: none
+    color: #FFF
+    background-color: #F00
+    padding-top: 8px
+    padding-bottom: 8px
+    display: block
+    font-size: 9px
+    cursor: pointer
+    float: right
+    text-transform: uppercase
+    width: 105px
+  #clear_cart
+    float: left
+    color: #92929C
+    padding: 8px 6px
+    text-decoration: underline
+    font-size: 12px
+  #total_legend
+    font-size: 14px
+    font-weight: bold
+    display: inline-block
+    margin: 6px 0 6px 450px
+  #total_price
+    font-size: 14px
+    font-weight: bold
+    text-align: right
+    color: #F00
+    display: inline-block
+    width: 150px
+
+#cart
+  width: 100%
+  float: none
+  td
+    padding: 0
+    color:  #666
+    margin: 0
+    img
+      width: 84px
+      height: 84px
+      border: 6px solid #f6f6f6
+    &.description
+      vertical-align: top
+      padding: 3px 0 0 10px
+      font-size: 16px
+      text-decoration: none
+      text-transform: uppercase
+      width: 320px
+      color: #8b8b8b
+      span
+        font-weight: bold
+        color: #4b4b4b
+        font-size: 12px
+    &.count
+      vertical-align: middle
+      width:  125px
+      font-size: 10px
+      font-weight: normal
+      input
+        border: 1px solid #999
+        padding: 5px
+        width: 35px
+        text-align: right
+    &.item_price
+      width: 128px
+      font-size: 14px
+      font-weight: bold
+    &.items_price
+      color: $red
+      font-size: 14px
+      font-weight: bold
+      width: 128px
+    a
+      width: 9px
+      height: 9px
+      background: url("/images/icons/remove_X.jpg") no-repeat center top
+      display: inline-block
+
+h1#catalogHeader
+  padding-top: 5px
+  ine-height: 40px
+  text-transform: uppercase
+  font-size: 10px
+  font-weight: normal
+  color: #7b7b7b
+  padding-left: 3px
+  margin-top: 10px
+  margin-bottom: 15px
+
+.category_table
+  width: 907px
+  background: #f6f6f6
+  border-spacing: 8px
+  td
+    background: white
+    margin: 0
+    padding:  0
+    width: 150px
+    position: relative
+    height: 150px
+    a
+      position: relative
+      display: block
+      img
+        display: block
+
+    span
+      position: absolute
+      bottom: 5px
+      right: 0
+      color: $grey-black
+  #category_wrapper_descr
+    img
+      display: block
+      float: left
+      margin:  10px 20px 0 10px
+
+    #text_wrapper
+      float: left
+
+#filters_line
+  margin: 0 0 20px 0
+  font-size: 9px
+  color: #767583
+  form>div
+    float: left
+    position: relative
+    font-weight: normal
+    font-family: verdana
+    margin: 0 20px 0 0
+  select
+    width: 128px
+    padding-left: 25px
+  input
+
+    color: #767583
+    padding: 0
+    margin: 0
+    margin-top: 4px
+    font-weight: normal
+    font-family: verdana
+    width: 128px
+    height: 14px
+    border: 0
+    border: 1px solid #f0f0f0
+    font-size: 9px
+    padding-top: 3px
+    vertical-align: middle
+    padding-bottom: 2px
+    padding-left: 25px
+
+
+#content div.selectbox-wrapper
+  position: absolute
+  border: 1px solid #f0f0f0
+  background: white
+  top: 35px
+  z-index: 10
+  padding-left: 25px
+  ul
+    list-style-type: none
+    margin: 0px
+    padding: 0px
+    li
+      list-style-type: none
+      margin-left: -25px
+      display: block
+      color: #767583
+      padding: 0 0 0 25px
+      line-height: 20px
+      font-size: 9px
+      cursor: pointer
+      &.selected
+        background-color: #EAF2FB
+      &.current
+        background-color: #CDD8E4
+
+#pages
+  float: right !important
+  color: $grey
+  line-height: 20px
+  font-size: 12px
+  margin:  16px 0 0 0 !important
+  a
+    text-decoration: none
+    color: $grey
+    &.current
+      font-weight: bold
+      color: $grey-black
+  b
+    color: $grey-black
+  .pegnation_link
+    display: inline-block
+    height: 11px
+    width: 6px
+    position: relative
+    top: 1px
+    margin:  0 5px
+    &.prev
+      background: url(/images/big_left4.jpg) no-repeat
+    &.next
+      background: url(/images/big_right4.jpg) no-repeat
+
+#image_container
+  float: left
+  margin: 10px 44px 0 0
+  position: relative
+  #second_image_wrapper
+    position: absolute
+    top: 0
+  .sencond_stage_photos
+    width: 50px
+    float: left
+    display: block
+    margin: 5px
+    height: 50px
+
+#item_content_wrapper
+  float: left
+  h1
+    width: 310px
+    height: 55px
+    padding-bottom: 10px
+    margin: 20px 0 0 0
+    vertical-align: bottom
+    overflow: hidden
+    color: #4f4f4f
+    font-weight: normal
+    font-size: 11px
+  #item_article
+    font-size: 14px
+    font-weight: bold
+  #item_description
+    color: $grey
+    font-size: 11px
+  #item_price
+    font-size: 23px
+  #item_add_to_cart
+    text-transform: uppercase
+    font-size: 14px
+
+#category_table_wrapper
+  margin: 20px -30px
+  &.first_page
+    margin-left: 0
+    &>a
+      height: 640px
+  &>a
+    display: block
+    width: 25px
+    margin:  0 5px 0 0
+    height: 482px
+    position: relative
+    float: left
+    img
+      position: absolute
+      top: 50%
+      left:  50%
+    &:hover
+      background: #fcfcfc
+    &.right
+      margin:  0 0 0 5px
+  table
+    float: left
+    display: block
+
+#catlogs_wrapper
+  background: #f6f6f6
+  padding: 10px 0 0 10px
+  .catalog_item
+    background: white
+    margin:  0 10px 10px 0
+    float: left
+    a
+      text-decoration: underline
+      display: block
+      width: 249px
+      height: 180px
+      padding: 20px
+      text-transform: uppercase

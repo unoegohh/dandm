@@ -1,0 +1,31 @@
+unoegohh_shop_item_id:
+    pattern:  /product/{id}
+    defaults: { _controller: UnoegohhShopBundle:Default:show }
+
+unoegohh_shop_catalog_list:
+    pattern:  /catalog
+    defaults: { _controller: UnoegohhShopBundle:Default:catalogList}
+
+unoegohh_shop_catalog:
+    pattern:  /catalog/{name}/{page}
+    defaults: { _controller: UnoegohhShopBundle:Default:catalog , page: 0}
+
+unoegohh_shop_add_to_cart:
+    pattern:  /addtocart/{id}
+    defaults: { _controller: UnoegohhShopBundle:Default:addToCart}
+
+unoegohh_shop_cart:
+    pattern:  /cart
+    defaults: { _controller: UnoegohhShopBundle:Default:cart}
+
+unoegohh_shop_cart_clear:
+    pattern:  /clearcart
+    defaults: { _controller: UnoegohhShopBundle:Default:clearCart}
+
+unoegohh_shop_cart_empty:
+    pattern:  /emptycart
+    defaults: { _controller: UnoegohhShopBundle:Default:emptyCart}
+
+unoegohh_shop_cart_remove:
+    pattern:  /cartremove/{id}
+    defaults: { _controller: UnoegohhShopBundle:Default:removeCart}

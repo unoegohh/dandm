@@ -1,0 +1,7 @@
+parameters:
+    secret: ThisTokenIsNotSoSecretChangeIt
+    assets_folder: "sass"
+
+    mail_from: unoegohh@gmail.com
+    mail_to: unoegohh@gmail.com
+    mail_name:  'Заказ с сайта'

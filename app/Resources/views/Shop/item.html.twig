@@ -1,0 +1,58 @@
+{% extends "::layout.html.twig" %}
+
+{% block content %}
+    <script type="text/javascript">
+        $(function(){
+            $('a#item_add_to_cart').click(function(e){
+                e.preventDefault();
+                var link = $(this).attr('href');
+
+                $.post(link,function(data){
+                    $('#cart span').html(data['count'] + ' товаров на сумму ' + data['total'] + ' руб ');
+
+                    $.fancybox({
+                        'content' : '<h2>Товар добавлен в корзину</h2> <a href="/cart">Перейти в корзину</a>'
+                    });
+                })
+            });
+        });
+    </script>
+    <div id="image_container">
+
+        {% for item in product.photos.galleryHasMedias %}
+            {% if loop.index == 1 %}
+                <a href="{% path item.getMedia , 'big'%}" class="fancybox">
+
+                    {% media item.getMedia, 'big' with {'width': '330px', 'height' : '330px'} %}
+                </a>
+            {% endif %}
+        {% endfor %}
+        <div id="second_image_wrapper">
+            {% for item in product.photos.galleryHasMedias %}
+                {% if loop.index != 1 %}
+                    <a href="{% path item.getMedia , 'big'%}" class="fancybox">
+                        {% media item.getMedia, 'big' with {'class': 'sencond_stage_photos'} %}
+                    </a>
+
+                {% endif %}
+            {% endfor %}
+        </div>
+
+    </div>
+    <div id="item_content_wrapper">
+        <h1>{{ product.name }}</h1>
+        <p id="item_article">Артикул : {{ product.id }}</p>
+        <p id="item_description">
+            {{ product.descr | raw }}
+        </p>
+        <p id="item_price">{{ product.price | number_format('0','',' ') }} р.</p>
+
+        <a id="item_add_to_cart" href="{{ path('unoegohh_shop_add_to_cart', {'id': product.getId}) }}">Добавить в корзину</a>
+    </div>
+    <div class="clear"></div>
+    <script type="text/javascript">
+        $(function(){
+            $(".fancybox").attr('rel', 'gallery').fancybox();
+        });
+    </script>
+{% endblock %}

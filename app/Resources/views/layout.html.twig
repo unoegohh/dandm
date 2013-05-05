@@ -1,0 +1,35 @@
+{% extends "::base.html.twig" %}
+
+{% block body %}
+    <div id="header">
+        <div id="phones">
+            <p><span>8 800 700-00-11</span> круглосуточно</p>
+            <p><span>876-49-89</span> отдел продаж</p>
+            <p><span>sunlight</span> skype</p>
+        </div>
+        <a id="home_link" href="/">SUNLIGHT</a>
+        <div id="cart">
+            <p><span>
+                {% render('UnoegohhShopBundle:Default:layoutCart') %}
+            </span><a href="{{ path('unoegohh_shop_cart') }}"></a></p>
+        </div>
+    </div>
+    <ul id="menu">
+        {% render('UnoegohhStaticPageBundle:Default:menu') %}
+    </ul>
+    <div id="content">
+        {% block content %}
+            <h2>Hello</h2>
+            <p>Some plain text</p>
+        {% endblock %}
+    </div>
+    <div id="footer">
+        <a id="sitemap" href="/">карта сайта</a>
+        <div>
+            <a href=""><img src="/images/icons/gray_lj_icon.png" alt=""></a>
+            <a href=""><img src="/images/icons/gray_fb_icon.png" alt=""></a>
+            <a href=""><img src="/images/icons/gray_vk_icon.png" alt=""></a>
+            <a href=""><img src="/images/icons/gray_yt_icon.png" alt=""></a>
+        </div>
+    </div>
+{% endblock %}

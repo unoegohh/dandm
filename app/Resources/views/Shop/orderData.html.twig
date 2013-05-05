@@ -1,0 +1,35 @@
+<h1>Заказ с сайта</h1>
+
+<p>C сайта пришел заказ:</p>
+
+<p>
+    Имя:  {{ data.name }}<br>
+    Телефон: {{ data.phone }}<br>
+    E-Mail: {{ data.email }}<br>
+    Город: {{ data.town }}<br>
+    Адресс: {{ data.address }}<br>
+    Коментарий: {{ data.comment }}<br>
+</p>
+
+<h3>Заказ</h3>
+<table>
+    <tr>
+        <td>ID</td>
+        <td>Название</td>
+        <td>Категория</td>
+        <td>Цена</td>
+        <td>Кол-во</td>
+    </tr>
+{% for i in cart %}
+    <tr>
+        <td>{{ i.item.getID }}</td>
+        <td>{{ i.item.getName }}</td>
+        <td>{{ i.item.getCategory }}</td>
+        <td>{{ i.item.getPrice }}</td>
+        <td>{{ i.count }}</td>
+    </tr>
+{% endfor %}
+
+</table>
+
+<p>Общая сумма заказа - {{ total }} руб</p>

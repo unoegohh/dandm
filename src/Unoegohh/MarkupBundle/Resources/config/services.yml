@@ -1,0 +1,7 @@
+parameters:
+#    unoegohh_markup.example.class: Unoegohh\MarkupBundle\Example
+
+services:
+#    unoegohh_markup.example:
+#        class: %unoegohh_markup.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]

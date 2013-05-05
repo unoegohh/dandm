@@ -1,0 +1,35 @@
+{% extends "::layout.html.twig" %}
+
+{% block content %}
+    <h2>Форма обратной связи</h2>
+
+    <form action="">
+        <div class="wrapper">
+            <table class="table_form">
+                <tr>
+                    <td class="label">ИМЯ</td>
+                    <td class="input"><input type="text"></td>
+                </tr>
+                <tr>
+                    <td class="label">ФАМИЛИЯ</td>
+                    <td class="input"><input type="text"></td>
+                </tr>
+                <tr>
+                    <td class="label">телефон</td>
+                    <td class="input"><input type="text"></td>
+                </tr>
+                <tr>
+                    <td class="label">удобное время для звонка</td>
+                    <td class="input"><input type="text"></td>
+                </tr>
+            </table>
+            <div class="additional_text">
+                <p>Доставка по Москве осуществляется нашей курьерской службой.</p>
+                <p>В пределах МКАД мы стараемся осуществить доставку в течение следующего рабочего дня после заказа. Если ваш заказ сделан в рабочее время, то в течение часа с вами обязательно свяжется наш оператор и предоставит Вам полную информацию по Вашему заказу. Если ваш заказ сделан позднее, то наши операторы свяжутся с вами в начале следующего рабочего дня.</p>
+            </div>
+            <div class="clear"></div>
+        </div>
+        <button>отправить</button>
+        <div class="clear"></div>
+    </form>
+{% endblock %}

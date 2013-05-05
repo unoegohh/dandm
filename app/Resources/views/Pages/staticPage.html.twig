@@ -1,0 +1,10 @@
+{% extends "::layout.html.twig" %}
+
+{% block title %}{{ staticPage.title }}{% endblock %}
+
+{% block content %}
+    <h2>
+        {{ staticPage.title }}
+    </h2>
+    {{ staticPage.content | raw }}
+{% endblock %}

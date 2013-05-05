@@ -1,0 +1,66 @@
+{% extends "::layout.html.twig" %}
+
+{% block content %}
+    <script type="text/javascript">
+        $(function(){
+            $('#sort').selectbox();
+            $('#price').selectbox();
+        });
+    </script>
+
+    <h1 id="catalogHeader">Новинки</h1>
+    <div id="filters_line">
+        <div>
+            <input type="text" id="code">
+        </div>
+        <div>
+            <select name="" id="sort">
+                <option value="1">По возрастанию</option>
+                <option value="1">По убыванию</option>
+            </select>
+        </div>
+        <div>
+            <select name="" id="price">
+                <option value="1">По возрастанию</option>
+                <option value="1">По убыванию</option>
+            </select>
+        </div>
+        <div id="pages">
+
+            <b>2</b> из 29
+            |
+
+            <a href="#">1</a>
+            <a class="current" href="#">2</a>
+            <a href="#">3</a>
+            ...
+            <a href="#">29</a>
+        </div>
+        <div class="clear"></div>
+    </div>
+    <table class="category_table">
+        <tr>
+            <td class="big_item" colspan="2" rowspan="2"></td>
+            <td>
+                <a href="#"><img src="/images/pic1.jpg" height="150px" width="150px" alt="">
+                    <span>16 990р.</span>
+                </a>
+            </td>
+            <td></td>
+            <td class="big_item" colspan="2" rowspan="2"></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td class="title_item" colspan="4" rowspan="2"></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+        </tr>
+    </table>
+{% endblock %}

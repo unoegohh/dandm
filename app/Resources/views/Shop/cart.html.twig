@@ -1,0 +1,128 @@
+{% extends "::layout.html.twig" %}
+
+{% block content %}
+    <script type="text/javascript">
+        $(function(){
+            $('#cart input').change(function(){
+                var $tr = $(this).parents('tr');
+                var price = $('.item_price' , $tr).attr('data-price');
+                $('.items_price', $tr).html($(this).val()*price + ' Р.');
+                $('.items_price', $tr).attr('data-total' , $(this).val()*price);
+
+                totalCount();
+            });
+
+            $('a.remove_item_from_cart').click(function(e){
+                e.preventDefault();
+                $(this).parents('tr').remove();
+                $.post('{{ unoegohh_shop_cart_remove }}', function(){
+
+                });
+                totalCount();
+                if($('a.remove_item_from_cart').length  == 0){
+                    window.location = '{{ path('unoegohh_shop_cart') }}';
+                }
+            });
+
+            function totalCount(){
+                var total = 0;
+                $('.items_price').each(function(){
+                    total += parseInt($(this).attr('data-total'));
+                    $('#total_price').html(total + ' Р.');
+                });
+            }
+            $('#clear_cart').click(function(e){
+                e.preventDefault();
+                var link = $(this).attr('href');
+                $.post(link, function(data){
+                    console.log(1);
+                });
+            });
+        });
+    </script>
+    <h2>КОРЗИНА</h2>
+
+    <form action="{{ path('unoegohh_shop_cart') }}" method="POST">
+        <div class="wrapper">
+            <table class="table_form">
+                <tr>
+                    <td class="label">ИМЯ <span>*</span></td>
+                    <td class="input">{{ form_widget(form.name) }}</td>
+                </tr>
+                <tr>
+                    <td class="label">МОБ.ТЕЛЕФОН <span>*</span></td>
+                    <td class="input">{{ form_widget(form.phone) }}</td>
+                </tr>
+                <tr>
+                    <td class="label">E-MAIL</td>
+                    <td class="input">{{ form_widget(form.email) }}</td>
+                </tr>
+                {#<tr>#}
+                    {#<td class="label">ОПЛАТА</td>#}
+                    {#<td class="input"><input type="text"></td>#}
+                {#</tr>#}
+                {#<tr>#}
+                    {#<td class="label">ДОСТАВКА</td>#}
+                    {#<td class="input"><input type="text"></td>#}
+                {#</tr>#}
+                <tr>
+                    <td class="label">ГОРОД <span>*</span></td>
+                    <td class="input">{{ form_widget(form.town) }}</td>
+                </tr>
+                <tr>
+                    <td class="label">АДРЕС <span>*</span></td>
+                    <td class="input">{{ form_widget(form.address) }}</td>
+                </tr>
+                <tr>
+                    <td class="label">КОММЕНТАРИЙ</td>
+                    <td class="input">{{ form_widget(form.comment) }}</td>
+                </tr>
+            </table>
+            <div class="additional_text">
+                <p>Доставка по Москве осуществляется нашей курьерской службой.</p>
+                <p>В пределах МКАД мы стараемся осуществить доставку в течение следующего рабочего дня после заказа. Если ваш заказ сделан в рабочее время, то в течение часа с вами обязательно свяжется наш оператор и предоставит Вам полную информацию по Вашему заказу. Если ваш заказ сделан позднее, то наши операторы свяжутся с вами в начале следующего рабочего дня.</p>
+            </div>
+            <div class="clear"></div>
+        </div>
+        <a id="clear_cart" href="{{ path('unoegohh_shop_cart_clear') }}">ОЧИСТИТЬ КОРЗИНУ</a>
+        <span id="total_legend">ИТОГО:</span>
+        <span id="total_price">{{ total }} Р.</span>
+        <button>оформить заказ</button>
+        <div class="clear"></div>
+        <div class="wrapper" style="margin-top: 7px">
+            <table id="cart">
+                {% for item in cart %}
+                    <tr>
+                        <td>
+                            {#{{ dump(item.item.getPhotos) }}#}
+
+                            {% for photo in item.item.getPhotos.galleryHasMedias %}
+                                {% if loop.index == 1 %}
+                                    {% media photo.getMedia, 'small' with {'width': '95px', 'height' : '95px'} %}
+                                {% endif %}
+                            {% endfor %}
+
+
+                        </td>
+                        <td class="description">
+                            {{ item.item.getName }} <br>
+                            <span>АРТИКУЛ: {{ item.item.getId }}</span>
+                        </td>
+                        <td class="count">
+                            <input type="number" size="1" name="cart[{{ item.item.getId }}]" value="{{ item.count }}"> ШТ.
+                        </td>
+                        <td class="item_price" data-price="{{ item.item.getPrice }}">
+                            {{ item.item.getPrice }} Р.
+                        </td>
+                        <td class="items_price"data-total='{{ item.item.getPrice * item.count}}'>
+                            {{ item.item.getPrice * item.count}} Р.
+                        </td>
+                        <td>
+                            <a class="remove_item_from_cart" href="#"></a>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </table>
+        </div>
+    </form>
+{% endblock %}

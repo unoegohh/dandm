@@ -211,12 +211,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/doctrine2.git",
-                "reference": "6063fe4adf3b1d8c0d608f103f55a5562a579391"
+                "reference": "209090d338b2bacf2a7fbde3c57fe51702d1b295"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/doctrine2/zipball/6063fe4adf3b1d8c0d608f103f55a5562a579391",
-                "reference": "6063fe4adf3b1d8c0d608f103f55a5562a579391",
+                "url": "https://api.github.com/repos/doctrine/doctrine2/zipball/209090d338b2bacf2a7fbde3c57fe51702d1b295",
+                "reference": "209090d338b2bacf2a7fbde3c57fe51702d1b295",
                 "shasum": ""
             },
             "require": {
@@ -273,7 +273,7 @@
                 "database",
                 "orm"
             ],
-            "time": "2013-05-01 09:01:17"
+            "time": "2013-05-04 11:39:37"
         },
         {
             "name": "friendsofsymfony/user-bundle",
@@ -897,12 +897,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/sonata-project/SonataAdminBundle.git",
-                "reference": "041174991a1d3c6725e1603c389b5767261972c7"
+                "reference": "c611614f23d5d42257747ae81bcc36df86216bae"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sonata-project/SonataAdminBundle/zipball/041174991a1d3c6725e1603c389b5767261972c7",
-                "reference": "041174991a1d3c6725e1603c389b5767261972c7",
+                "url": "https://api.github.com/repos/sonata-project/SonataAdminBundle/zipball/c611614f23d5d42257747ae81bcc36df86216bae",
+                "reference": "c611614f23d5d42257747ae81bcc36df86216bae",
                 "shasum": ""
             },
             "require": {
@@ -953,7 +953,7 @@
                 },
                 {
                     "name": "Sonata Community",
-                    "homepage": "https://github.com/sonata-project/SonataDoctrineMongoDBAdminBundle/contributors"
+                    "homepage": "https://github.com/sonata-project/SonataAdminBundle/contributors"
                 }
             ],
             "description": "Symfony SonataAdminBundle",
@@ -964,7 +964,7 @@
                 "bootstrap",
                 "sonata"
             ],
-            "time": "2013-04-11 21:38:12"
+            "time": "2013-05-03 19:57:10"
         },
         {
             "name": "sonata-project/block-bundle",

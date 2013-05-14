@@ -41,10 +41,10 @@ class Menu
      * @ORM\JoinColumn(name="parent_id", referencedColumnName="id")
      */
     protected $parent;
-
+//
     public function __toString(){
         if($this->getName()){
-            return $this->getName();
+            return (string) $this->getName();
         }
         else{
             return "Элемент меню";

@@ -68,6 +68,10 @@ class Product
      * @Assert\NotBlank()
      */
     protected $position;
+    /**
+     * @ORM\Column(type="string",nullable=true)
+     */
+    protected $ringSize;
 
     public function __toString(){
         if($this->getName()){
@@ -182,6 +186,16 @@ class Product
     public function getDescr()
     {
         return $this->descr;
+    }
+
+    public function setRingSize($ringSize)
+    {
+        $this->ringSize = $ringSize;
+    }
+
+    public function getRingSize()
+    {
+        return $this->ringSize;
     }
 
 

@@ -41,6 +41,7 @@ form:
     label_position: Сортировка
     label_eng_name: Название категории на английском
     label_parent: Родительский элемент
+    label_ring_size: Размер колец (указывается через запятую например - "17,14.5,13")
 show:
     label_enabled: Спрятано
     label_title: Загаловок страницы
@@ -56,6 +57,7 @@ show:
     label_position: Сортировка
     label_eng_name: Название категории на английском
     label_parent: Родительский элемент
+    label_ring_size: Размер колец
 list:
     label_enabled: Спрятано
     label_title: Загаловок страницы
@@ -72,6 +74,8 @@ list:
     label_position: Сортировка
     label_eng_name: Название категории на английском
     label_parent: Родительский элемент
+    label_ring_size: Размер колец
+
 
 breadcrumb:
     link_static_page_list: Список статичных страниц

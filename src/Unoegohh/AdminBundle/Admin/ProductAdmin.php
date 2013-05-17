@@ -33,34 +33,39 @@ class ProductAdmin extends Admin
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
-            ->add('name')
-            ->add('smallDesc', 'textarea')
-            ->add('descr', 'textarea', array('attr' => array('class' => 'tinymce'), 'required' => false))
-            ->add('price')
-            ->add('discount', null, array('required' => false))
-            ->add('category', 'sonata_type_model', array(),
-                array('link_parameters' =>
-                    array('context' => 'default',
-                        'provider' => 'sonata.media.provider.image'
+            ->with('Главное')
+                ->add('name')
+                ->add('smallDesc', 'textarea')
+                ->add('descr', 'textarea', array('attr' => array('class' => 'tinymce'), 'required' => false))
+                ->add('price')
+                ->add('discount', null, array('required' => false))
+                ->add('category', 'sonata_type_model', array(),
+                    array('link_parameters' =>
+                        array('context' => 'default',
+                            'provider' => 'sonata.media.provider.image'
+                            )
+                        )
+                    )
+                ->add('position', null, array('required' => false))
+                ->add('photos', 'sonata_type_model',
+                    array(
+    //                    'by_reference' => false
+                        'required' => false,
+                    ),
+                    array(
+    //                    'edit' => 'inline',
+    //                    'inline' => 'table',
+    //                    'sortable'  => 'position',
+                        'link_parameters' => array(
+                            'context' => 'default',
+                            'provider' => 'sonata.media.provider.gallery'
                         )
                     )
                 )
-            ->add('position', null, array('required' => false))
-            ->add('photos', 'sonata_type_model',
-                array(
-//                    'by_reference' => false
-                    'required' => false,
-                ),
-                array(
-//                    'edit' => 'inline',
-//                    'inline' => 'table',
-//                    'sortable'  => 'position',
-                    'link_parameters' => array(
-                        'context' => 'default',
-                        'provider' => 'sonata.media.provider.gallery'
-                    )
-                )
-            )
+            ->end()
+            ->with('Специфичное', array('collapsed' => true))
+                ->add('ringSize', null, array('required' => false))
+            ->end()
         ;
     }
 

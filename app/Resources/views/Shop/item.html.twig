@@ -1,13 +1,25 @@
 {% extends "::layout.html.twig" %}
 
 {% block content %}
+
+    <script type="text/javascript">
+        $(function(){
+            $('#sizes').selectbox();
+        });
+    </script>
+
     <script type="text/javascript">
         $(function(){
             $('a#item_add_to_cart').click(function(e){
                 e.preventDefault();
                 var link = $(this).attr('href');
+                var values = {};
 
-                $.post(link,function(data){
+                if($('#sizes').val()){
+                    values['size'] = $('#sizes').val();
+                }
+
+                $.post(link,values,function(data){
                     $('#cart span').html(data['count'] + ' товаров на сумму ' + data['total'] + ' руб ');
 
                     $.fancybox({
@@ -47,6 +59,18 @@
         </p>
         <p id="item_price">{{ product.price | number_format('0','',' ') }} р.</p>
 
+        <div id="item_specs">
+            {% if product.ringSize.0 %}
+                <p>Размер кольца</p>
+                <select name="sizes" id="sizes">
+                    {% for i in product.ringSize %}
+                        <option>{{ i }}</option>
+                    {% endfor %}
+                </select>
+            {% endif %}
+        </div>
+
+        <br>
         <a id="item_add_to_cart" href="{{ path('unoegohh_shop_add_to_cart', {'id': product.getId}) }}">Добавить в корзину</a>
     </div>
     <div class="clear"></div>

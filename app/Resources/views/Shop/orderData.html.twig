@@ -23,7 +23,7 @@
 {% for i in cart %}
     <tr>
         <td>{{ i.item.getID }}</td>
-        <td>{{ i.item.getName }}</td>
+        <td>{{ i.item.getName }} {% if i.size is defined %}{{ i.size }}{% endif %}</td>
         <td>{{ i.item.getCategory }}</td>
         <td>{{ i.item.getPrice }}</td>
         <td>{{ i.count }}</td>

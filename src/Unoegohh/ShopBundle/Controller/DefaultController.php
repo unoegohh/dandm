@@ -4,6 +4,7 @@ namespace Unoegohh\ShopBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\Request;
 
 class DefaultController extends Controller
 {
@@ -12,9 +13,10 @@ class DefaultController extends Controller
         $em = $this->getDoctrine()->getManager();
         $product = $em->getRepository('UnoegohhAdminBundle:Product')->find($id);
 
-        $medias = $product->getPhotos()->getGalleryHasMedias()->toArray();
+        $size = explode(',',$product->getRingSize());
+        sort($size);
+        $product->setRingSize($size);
 
-        $media = get_class_methods($medias[0]->getMedia()->getProviderReference());
         return $this->render(':Shop:item.html.twig', array('product' => $product));
     }
 
@@ -107,16 +109,29 @@ class DefaultController extends Controller
             'products' => $products
         ));
     }
-    public function addToCartAction($id){
+    public function addToCartAction(Request $request, $id){
         $em = $this->getDoctrine()->getManager();
+
+
+
         $session = $this->get('session');
         $product = $em->getRepository('UnoegohhAdminBundle:Product')->find($id);
         $cart = $session->get('cart');
-        if(isset($cart[$id])){
-            $cart[$id]['count'] += 1;
+
+        $size = $request->request->get('size');
+
+        $name = md5($id . ' ' . $size );
+
+        if(isset($cart[$name])){
+            $cart[$name]['count'] += 1;
         }else{
-            $cart[$id]['item']= $product;
-            $cart[$id]['count']= 1;
+            $cart[$name]['id'] = $id;
+            $cart[$name]['item']= $product;
+            $cart[$name]['count']= 1;
+        }
+
+        if($size){
+            $cart[$name]['size'] = $size;
         }
         $session->set('cart', $cart);
 
@@ -169,20 +184,26 @@ class DefaultController extends Controller
             foreach($newCart as $key=>&$value){
                 $count = $value;
                 $value = $cart[$key];
+
                 $value['count'] = $count;
             }
             $cart = $newCart;
         }
 
         foreach($cart as $key => $cartItem){
-            $cartIds[] = $key;
+            $cartIds[] = $cartItem['id'];
             $item = $cartItem['item'];
             $total += $cartItem['count'] * $item->getPrice();
         }
         $products = $em->getRepository('UnoegohhAdminBundle:Product')->findBy(array('id' => $cartIds));
 
         foreach($products as $product){
-            $cart[$product->getId()]['item'] = $product;
+            foreach($cart as &$value){
+                if($value['id'] == $product->getId()){
+
+                    $value['item'] = $product;
+                }
+            }
         }
         $form = $this->createFormBuilder()
             ->add('name', 'text')
@@ -190,7 +211,7 @@ class DefaultController extends Controller
             ->add('phone', 'text')
             ->add('town', 'text')
             ->add('address', 'text')
-            ->add('comment', 'text')
+            ->add('comment', 'text', array('required' => false))
             ->getForm();
 
         if ($request->isMethod('POST')) {
@@ -222,7 +243,6 @@ class DefaultController extends Controller
         $session->set('cart', array());
 
         $response = new Response();
-        $response->headers->set('Content-type', 'application/json');
         $response->setContent('ok');
         return $response;
     }
@@ -233,7 +253,6 @@ class DefaultController extends Controller
         unset($cart[$id]);
         $session->set('cart', $cart);
         $response = new Response();
-        $response->headers->set('Content-type', 'application/json');
         $response->setContent('ok');
         return $response;
     }

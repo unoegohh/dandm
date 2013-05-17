@@ -34,8 +34,9 @@
             $('#clear_cart').click(function(e){
                 e.preventDefault();
                 var link = $(this).attr('href');
-                $.post(link, function(data){
-                    console.log(1);
+
+                $.post(link).done(function(data){
+                    document.location.reload(true);
                 });
             });
         });
@@ -91,7 +92,7 @@
         <div class="clear"></div>
         <div class="wrapper" style="margin-top: 7px">
             <table id="cart">
-                {% for item in cart %}
+                {% for key,item in cart %}
                     <tr>
                         <td>
                             {#{{ dump(item.item.getPhotos) }}#}
@@ -101,15 +102,18 @@
                                     {% media photo.getMedia, 'small' with {'width': '95px', 'height' : '95px'} %}
                                 {% endif %}
                             {% endfor %}
-
-
                         </td>
                         <td class="description">
                             {{ item.item.getName }} <br>
-                            <span>АРТИКУЛ: {{ item.item.getId }}</span>
+                            <span>АРТИКУЛ: {{ item.item.getId }}</span> <br>
+                            {% if item.size is defined %}
+                                <p>
+                                    Размер - {{ item.size }}
+                                </p>
+                            {% endif %}
                         </td>
                         <td class="count">
-                            <input type="number" size="1" name="cart[{{ item.item.getId }}]" value="{{ item.count }}"> ШТ.
+                            <input type="number" size="1" name="cart[{{ key }}]" value="{{ item.count }}"> ШТ.
                         </td>
                         <td class="item_price" data-price="{{ item.item.getPrice }}">
                             {{ item.item.getPrice }} Р.

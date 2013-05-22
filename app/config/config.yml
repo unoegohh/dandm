@@ -58,8 +58,8 @@ sonata_media:
 
             formats:
                 very_small: { width: 50 , quality: 70}
-                catalog_small: { width: 150 , quality: 70}
-                catalog_big: { width: 283 , quality: 70}
+                catalog_small: { width: 141 , quality: 70}
+                catalog_big: { width: 284 , quality: 70}
                 small: { width: 100 , quality: 70}
                 big:   { width: 330 , quality: 70}
 

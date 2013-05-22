@@ -5,6 +5,7 @@ namespace Unoegohh\ShopBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
+use Doctrine\ORM\Query\ResultSetMapping;
 
 class DefaultController extends Controller
 {
@@ -41,6 +42,7 @@ class DefaultController extends Controller
         }
         $request = $this->getRequest();
         $order = $request->query->get('order');
+        $gType = $request->query->get('goldType');
         $orderArray = array('position' => 'ASC');
         if($order){
             if($order == 1){
@@ -50,6 +52,9 @@ class DefaultController extends Controller
                 $orderType =  'DESC';
             }
             $orderArray = array('price' => $orderType);
+        }
+        if($gType){
+            $gType =  $em->getRepository('UnoegohhAdminBundle:GoldType')->find($gType);
         }
         //////////////////////////////////////////////////////////////////////////////////
         $pricesRaw = $request->query->get('price');
@@ -71,42 +76,71 @@ class DefaultController extends Controller
             $query->setMaxResults(12);
             $query->setFirstResult($offset);
 
-            if($order){
+            if($order && !$gType){
                 $query = $em->createQuery("select p from UnoegohhAdminBundle:Product p where p.price >= :min and p.price <= :max order by p.price " . $orderType);
-            }else{
+            }
+            elseif($gType && !$order){
+                $query = $em->createQuery("select p from UnoegohhAdminBundle:Product p where p.price >= :min and p.price <= :max and p.gtype_id = " . $gType->getId() . " order by p.position ASC");
+            }
+            elseif($gType && $order){
+                $query = $em->createQuery("select p from UnoegohhAdminBundle:Product p where p.price >= :min and p.price <= :max and p.gtype_id = " . $gType->getId() . " order by p.price " . $orderType);
+            }
+            else{
                 $query = $em->createQuery("select p from UnoegohhAdminBundle:Product p where p.price >= :min and p.price <= :max order by p.position ASC");
             }
             $query->setParameters(array(
                 'min' => $prices[0],
                 'max' => $prices[1],
             ));
-            $pageCount = ceil((count($query->getResult()) + 2) / 12);
-
             $products = $query->getResult();
+            $pageCount = ceil((count($products) + 2) / 12);
+
         }else{
 
             $qb = $em->createQueryBuilder();
             $qb->select('count(product.id)')
-            ->add('where', 'product.category = ?1');
+                ->add('where', 'product.category = ?1');
+
+            if($gType){
+
+               $qb->add('where', 'product.goldType = ?2 and product.category = ?1');
+
+                $qb->setParameter(2, $gType->getId());
+            }
+
             $qb->setParameter(1, $category->getId());
             $qb->from('UnoegohhAdminBundle:Product','product');
 
             $pageCount = ceil(($qb->getQuery()->getSingleScalarResult() + 2) / 12);
-            $products = $em->getRepository('UnoegohhAdminBundle:Product')->findBy(array('category' => $category),$orderArray, 12 , $offset);
+            $criteria = array('category' => $category);
+            if($gType){
+                $criteria['goldType'] = $gType;
+            }
+            $products = $em->getRepository('UnoegohhAdminBundle:Product')->findBy($criteria,$orderArray, 12 , $offset);
         }
         $link_addon = $request->server->get('QUERY_STRING');
 
+        $gTypes= array();
+        if($category->getGoldType()){
 
+            foreach($products as $product){
+                if($product->getGoldType()){
+                    $gTypes[$product->getGoldType()->getId()] = $product->getGoldType()->getName();
+                }
+            }
+        }
 
         return $this->render(':Shop:catalog.html.twig', array(
             'link_addon' => $link_addon,
             'order' => $order,
+            'currGoldType' => $gType,
             'prices' => $pricesRaw,
             'pageCount' => $pageCount,
             'page' => $page+1,
             'template' => $template,
             'category' => $category,
-            'products' => $products
+            'products' => $products,
+            'gtype' => $gTypes
         ));
     }
     public function addToCartAction(Request $request, $id){

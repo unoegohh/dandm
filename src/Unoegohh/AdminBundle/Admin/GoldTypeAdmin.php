@@ -10,7 +10,7 @@ use Sonata\AdminBundle\Show\ShowMapper;
 
 use Knp\Menu\ItemInterface as MenuItemInterface;
 
-class CategoryAdmin extends Admin
+class GoldTypeAdmin extends Admin
 {
     /**
      * @param \Sonata\AdminBundle\Show\ShowMapper $showMapper
@@ -33,12 +33,6 @@ class CategoryAdmin extends Admin
     {
         $formMapper
             ->add('name')
-            ->add('engName')
-            ->add('descr', 'textarea', array('attr' => array('class' => 'tinymce'), 'required' => false))
-            ->add('goldType')
-            ->add('icon', 'sonata_type_model', array(),
-            array('link_parameters' => array('context' =>
-            'default', 'provider' => 'sonata.media.provider.image')))
         ;
     }
 

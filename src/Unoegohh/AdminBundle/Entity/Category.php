@@ -45,6 +45,11 @@ class Category
      */
     protected $icon;
 
+    /**
+     * @ORM\Column(type="boolean",nullable=true)
+     */
+    protected $goldType;
+
     public function __toString(){
         if($this->getName()){
             return $this->getName();
@@ -104,4 +109,13 @@ class Category
         return $this->descr;
     }
 
+    public function setGoldType($goldType)
+    {
+        $this->goldType = $goldType;
+    }
+
+    public function getGoldType()
+    {
+        return $this->goldType;
+    }
 }

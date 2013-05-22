@@ -68,10 +68,18 @@ class Product
      * @Assert\NotBlank()
      */
     protected $position;
+
     /**
      * @ORM\Column(type="string",nullable=true)
      */
     protected $ringSize;
+
+
+    /**
+     * @ORM\ManyToOne(targetEntity="GoldType", cascade={"all"})
+     * @ORM\JoinColumn(name="gtype_id",referencedColumnName="id")
+     */
+    protected $goldType;
 
     public function __toString(){
         if($this->getName()){
@@ -196,6 +204,16 @@ class Product
     public function getRingSize()
     {
         return $this->ringSize;
+    }
+
+    public function setGoldType($goldType)
+    {
+        $this->goldType = $goldType;
+    }
+
+    public function getGoldType()
+    {
+        return $this->goldType;
     }
 
 

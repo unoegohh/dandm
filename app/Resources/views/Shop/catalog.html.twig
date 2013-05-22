@@ -3,15 +3,18 @@
 {% macro product(product, type) %}
     {% if product %}
         <a href="{{ path('unoegohh_shop_item_id',{'id': product.getId()}) }}">
-            {% for item in product.photos.galleryHasMedias %}
-                {% if loop.index == 1 %}
-                    {% if type == 'catalog_small' %}
-                        {% media item.getMedia, type with {'width': '141px', 'height' : '141px'} %}
-                        {% elseif type == 'catalog_big' %}
-                        {% media item.getMedia, type with {'width': '280px', 'height' : '280px'} %}
+            <div>
+                {% for item in product.photos.galleryHasMedias %}
+                    {% if loop.index == 1 %}
+                        {% if type == 'catalog_small' %}
+
+                            {% media item.getMedia, type %}
+                            {% elseif type == 'catalog_big' %}
+                            {% media item.getMedia, type with {'width': '280px', 'height' : '280px'} %}
+                        {% endif %}
                     {% endif %}
-                {% endif %}
-            {% endfor %}
+                {% endfor %}
+            </div>
         </a>
         <span>{{ product.price | number_format('0','',' ') }} р.</span>
     {% endif %}
@@ -24,8 +27,9 @@
         $(function(){
             $('#sort').selectbox();
             $('#price').selectbox();
+            $('#goldType').selectbox();
 
-            $('#sort, #price').change(function(){
+            $('#sort, #price,#goldType').change(function(){
                 document.sort_form.submit();
 //                console.log($(this).val());
             });
@@ -50,13 +54,6 @@
         <div>
             Цена <br>
 
-
-            {#<select name="price" id="price">#}
-                {#<option value="0">Без сортировки</option>#}
-                {#<option {% if prices == '0_2000' %}selected{% endif %} value="0-2000">до 2000 руб</option>#}
-                {#<option value="2" {% if order == '2' %}selected{% endif %}>По убыванию цены</option>#}
-            {#</select>#}
-
             <select name="price" id="price">
                 <option value="0">Без сортировки</option>
                 <option {% if prices == '0-2000' %}selected{% endif %} value="0-2000">до 2000 руб</option>
@@ -67,6 +64,19 @@
                 <option {% if prices == '50000-1000000' %}selected{% endif %} value="50000-1000000">от 50000 руб</option>
             </select>
         </div>
+
+        {% if category.goldType %}
+        <div>
+            Тип золота <br>
+
+            <select name="goldType" id="goldType">
+                <option value="all">Все</option>
+                {% for key,value in gtype %}
+                    <option value="{{ key }}" {% if gtype.id == key %}selected{% endif %}>{{ value }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        {% endif %}
     </form>
         {% if pageCount !=1 %}
     <div id="pages">

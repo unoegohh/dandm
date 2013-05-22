@@ -27,3 +27,10 @@ services:
       tags:
         - { name: sonata.admin, manager_type: orm, group: group.menu, label: admin.menu, label_translator_strategy: sonata.admin.label.strategy.underscore }
       arguments: [null,  Unoegohh\AdminBundle\Entity\Menu, UnoegohhAdminBundle:MenuAdmin]
+   Unoegohh.admin.admin.GoldType:
+      class: Unoegohh\AdminBundle\Admin\GoldTypeAdmin
+      calls:
+          - [setTranslationDomain, [UnoegohhAdminBundle]]
+      tags:
+        - { name: sonata.admin, manager_type: orm, group: group.items, label: admin.goldType, label_translator_strategy: sonata.admin.label.strategy.underscore }
+      arguments: [null,  Unoegohh\AdminBundle\Entity\GoldType, UnoegohhAdminBundle:GoldTypeAdmin]

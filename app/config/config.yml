@@ -57,11 +57,11 @@ sonata_media:
                 - sonata.media.provider.file
 
             formats:
-                very_small: { width: 50 , quality: 100}
-                catalog_small: { width: 141 , quality: 100}
-                catalog_big: { width: 284 , quality: 100}
-                small: { width: 100 , quality: 100}
-                big:   { width: 330 , quality: 100}
+                very_small: { width: 50 , quality: 800}
+                catalog_small: { width: 141 , quality: 800}
+                catalog_big: { width: 284 , quality: 800}
+                small: { width: 100 , quality: 800}
+                big:   { width: 330 , quality: 800}
 
     cdn:
         server:

@@ -65,7 +65,7 @@ class ProductAdmin extends Admin
             ->end()
             ->with('Специфичное', array('collapsed' => true))
                 ->add('ringSize', null, array('required' => false))
-                ->add('goldType', 'sonata_type_model', array()
+                ->add('goldType', 'sonata_type_model',  array('required' => false)
                 )
             ->end()
         ;

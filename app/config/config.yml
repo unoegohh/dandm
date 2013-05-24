@@ -51,17 +51,16 @@ sonata_media:
     contexts:
         default:  # the default context is mandatory
             providers:
-                - sonata.media.provider.dailymotion
-                - sonata.media.provider.youtube
+#                - sonata.media.provider.dailymotion
+#                - sonata.media.provider.youtube
                 - sonata.media.provider.image
-                - sonata.media.provider.file
+#                - sonata.media.provider.file
 
             formats:
-                very_small: { width: 50 , quality: 800}
-                catalog_small: { width: 141 , quality: 800}
-                catalog_big: { width: 284 , quality: 800}
-                small: { width: 100 , quality: 800}
-                big:   { width: 330 , quality: 800}
+                very_small: { width: 50 }
+                catalog_small: { width: 141, quality: 100000}
+                catalog_big: { width: 284}
+                big:   { width: 500 , quality: 100}
 
     cdn:
         server:

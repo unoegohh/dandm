@@ -8,9 +8,9 @@
                     {% if loop.index == 1 %}
                         {% if type == 'catalog_small' %}
 
-                            {% media item.getMedia, type %}
+                            {% media item.getMedia, 'big' %}
                             {% elseif type == 'catalog_big' %}
-                            {% media item.getMedia, type with {'width': '280px', 'height' : '280px'} %}
+                            {% media item.getMedia, 'big' %}
                         {% endif %}
                     {% endif %}
                 {% endfor %}
@@ -68,11 +68,11 @@
         {% if category.goldType %}
         <div>
             Тип золота <br>
-
             <select name="goldType" id="goldType">
+
                 <option value="all">Все</option>
                 {% for key,value in gtype %}
-                    <option value="{{ key }}" {% if gtype.id == key %}selected{% endif %}>{{ value }}</option>
+                    <option value="{{ key }}" {% if currGoldType.getId == key %}selected{% endif %}>{{ value }}</option>
                 {% endfor %}
             </select>
         </div>

@@ -1,0 +1,43 @@
+{% extends ':Admin:layout.html.twig' %}
+
+{% form_theme form ':Form:fields.html.twig' %}
+
+{% macro form_checkbox(form) %}
+    <label class="checkbox">
+        {{ form_widget(form) }}
+        {{ form_label(form) }}
+    </label>
+{% endmacro %}
+
+{% trans_default_domain "PegasAdminBundle" %}
+
+{% block content %}
+    {% import _self as macro %}
+    <form method="POST" >
+        {% if save %}
+            <div class="alert alert-success">
+                Данные сохранены!
+            </div>
+        {% endif %}
+        {#{{ form_widget(form.phone) }}#}
+        <fieldset>
+            <legend>Данные сайта</legend>
+            {{ form_row(form.samo_town_id) }}
+            {{ form_row(form.phone) }}
+            {{ form_row(form.module) }}
+            {{ form_row(form.name) }}
+            {{ form_row(form.email) }}
+        </fieldset>
+        <fieldset>
+            <legend>Блоки на главной странице</legend>
+            {{ macro.form_checkbox(form.news_block) }}
+            {{ macro.form_checkbox(form.banner_block) }}
+            {{ macro.form_checkbox(form.avia_block) }}
+            {{ macro.form_checkbox(form.dyn_block) }}
+            {{ macro.form_checkbox(form.search_block) }}
+            {{ macro.form_checkbox(form.article_block) }}
+        </fieldset>
+        <hr>
+        <button class="btn btn-success">Сохранить</button>
+    </form>
+{% endblock %}

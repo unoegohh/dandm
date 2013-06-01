@@ -36,6 +36,7 @@ class AppKernel extends Kernel
             new Stfalcon\Bundle\TinymceBundle\StfalconTinymceBundle(),
             new Unoegohh\StaticPageBundle\UnoegohhStaticPageBundle(),
             new Unoegohh\ShopBundle\UnoegohhShopBundle(),
+            new Unoegohh\EbayBundle\UnoegohhEbayBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

@@ -2,18 +2,18 @@
 
 {% macro product(product, type) %}
     {% if product %}
-        <a href="{{ path('unoegohh_shop_item_id',{'id': product.getId()}) }}">
+        <a href="{{ path('unoegohh_shop_item_id',{'id': product.getId()}) }}" title="{{ product.name }}">
             <div>
+                {% if product.photos.galleryHasMedias %}
                 {% for item in product.photos.galleryHasMedias %}
                     {% if loop.index == 1 %}
-                        {% if type == 'catalog_small' %}
 
-                            {% media item.getMedia, 'big' %}
-                            {% elseif type == 'catalog_big' %}
-                            {% media item.getMedia, 'big' %}
-                        {% endif %}
+                        {% media item.getMedia, 'big' with {'title': item.name} %}
                     {% endif %}
                 {% endfor %}
+                {% else %}
+                    <img src="{{ product.getPhotoUrl() }}" title="{{ product.name }}">
+                {% endif %}
             </div>
         </a>
         <span>{{ product.price | number_format('0','',' ') }} р.</span>

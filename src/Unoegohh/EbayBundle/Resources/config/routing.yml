@@ -1,0 +1,7 @@
+unoegohh_ebay_homepage:
+    pattern:  /
+    defaults: { _controller: UnoegohhEbayBundle:Default:index }
+
+unoegohh_ebay_item_admin:
+    pattern:  /item
+    defaults: { _controller: UnoegohhEbayBundle:Item:item }

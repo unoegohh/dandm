@@ -47,6 +47,7 @@ class ProductAdmin extends Admin
                         )
                     )
                 ->add('position', null, array('required' => false))
+                ->add('photo_url', null, array('required' => false))
                 ->add('photos', 'sonata_type_model',
                     array(
     //                    'by_reference' => false

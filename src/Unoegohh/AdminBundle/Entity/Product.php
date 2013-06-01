@@ -64,6 +64,11 @@ class Product
     protected $photos;
 
     /**
+     * @ORM\Column(type="string",nullable=true)
+     */
+    protected $photo_url;
+
+    /**
      * @ORM\Column(type="integer")
      * @Assert\NotBlank()
      */
@@ -73,7 +78,6 @@ class Product
      * @ORM\Column(type="string",nullable=true)
      */
     protected $ringSize;
-
 
     /**
      * @ORM\ManyToOne(targetEntity="GoldType", cascade={"all"})
@@ -214,6 +218,16 @@ class Product
     public function getGoldType()
     {
         return $this->goldType;
+    }
+
+    public function setPhotoUrl($photo_url)
+    {
+        $this->photo_url = $photo_url;
+    }
+
+    public function getPhotoUrl()
+    {
+        return $this->photo_url;
     }
 
 

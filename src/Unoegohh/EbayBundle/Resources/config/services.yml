@@ -1,0 +1,7 @@
+parameters:
+#    unoegohh_ebay.example.class: Unoegohh\EbayBundle\Example
+
+services:
+#    unoegohh_ebay.example:
+#        class: %unoegohh_ebay.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]

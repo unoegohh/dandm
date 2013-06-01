@@ -1,0 +1,45 @@
+{% extends ':ItemAdmin:layout.html.twig' %}
+
+
+{% block content %}
+    <h1>Заполнение перевода</h1>
+    <form method="POST" >
+        {#{{ form_widget(form.phone) }}#}
+        <fieldset>
+            <legend>Поля</legend>
+            {#{{ form_row(form.samo_town_id) }}#}
+            {#{{ form_row(form.phone) }}#}
+            {#{{ form_row(form.module) }}#}
+            {#{{ form_row(form.name) }}#}
+            {#{{ form_row(form.email) }}#}
+            <ul>
+                {% for i in examples %}
+                    <li>{{ i.getName() }}</li>
+                {% endfor %}
+            </ul>
+            {{ form_widget(form) }}
+        </fieldset>
+
+        <hr>
+        <button class="btn btn-success">Сохранить</button>
+        <br>
+        <br>
+        {% for i in examples %}
+            {% if loop.first %}
+                <img width="100px" height="100px" src="{{ i.getLocalImg() }}" alt="">
+            {% endif %}
+        {% endfor %}
+        <fieldset>
+            <legend>Статистика</legend>
+            <p>Всего - <span class="badge badge-success">{{ left + done }}</span></p>
+            <p>Заполнено - <span class="badge badge-success">{{ done }}</span></p>
+            <p>Осталось - <span class="badge badge-success">{{ left }}</span></p>
+            {#{{ macro.form_checkbox(form.news_block) }}#}
+            {#{{ macro.form_checkbox(form.banner_block) }}#}
+            {#{{ macro.form_checkbox(form.avia_block) }}#}
+            {#{{ macro.form_checkbox(form.dyn_block) }}#}
+            {#{{ macro.form_checkbox(form.search_block) }}#}
+            {#{{ macro.form_checkbox(form.article_block) }}#}
+        </fieldset>
+    </form>
+{% endblock %}

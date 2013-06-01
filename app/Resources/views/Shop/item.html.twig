@@ -31,11 +31,12 @@
     </script>
     <div id="image_container">
 
+        {% if product.photos.galleryHasMedias %}
         {% for item in product.photos.galleryHasMedias %}
             {% if loop.index == 1 %}
                 <a href="{% path item.getMedia , 'big'%}" class="fancybox">
 
-                    {% media item.getMedia, 'big' with {'width': '330px', 'height' : '330px'} %}
+                    {% media item.getMedia, 'big' %}
                 </a>
             {% endif %}
         {% endfor %}
@@ -49,6 +50,9 @@
                 {% endif %}
             {% endfor %}
         </div>
+        {% else %}
+            <img src="{{ product.getPhotoUrl() }}" alt="">
+        {% endif %}
 
     </div>
     <div id="item_content_wrapper">

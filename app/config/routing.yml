@@ -1,3 +1,7 @@
+unoegohh_ebay:
+    resource: "@UnoegohhEbayBundle/Resources/config/routing.yml"
+    prefix:   /ebay
+
 unoegohh_shop:
     resource: "@UnoegohhShopBundle/Resources/config/routing.yml"
     prefix:   /

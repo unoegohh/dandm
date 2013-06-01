@@ -25,7 +25,7 @@ class DefaultController extends Controller
             "&itemFilter(0).value=loose.diamonds.king" .
             "&itemFilter(1).name=LocatedIn" .
             "&itemFilter(1).value=WorldWide".
-            "&paginationInput.entriesPerPage=15&paginationInput.pageNumber=1".
+//            "&paginationInput.entriesPerPage=15&paginationInput.pageNumber=1".
             "&outputSelector=$outputSelector"
             ;
 

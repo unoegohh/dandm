@@ -5,3 +5,5 @@ unoegohh_static_page_homepage:
 unoegohh_static_page_static:
     pattern:  /{url}
     defaults: { _controller: UnoegohhStaticPageBundle:Default:page }
+    requirements:
+        url: ".*"

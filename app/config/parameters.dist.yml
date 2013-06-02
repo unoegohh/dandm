@@ -5,3 +5,6 @@ parameters:
     mail_from: unoegohh@gmail.com
     mail_to: unoegohh@gmail.com
     mail_name:  'Заказ с сайта'
+
+    sass_folder: /var/lib/gems/1.8
+    compass_folder: /var/lib/gems/1.8

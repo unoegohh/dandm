@@ -23,6 +23,7 @@ class DefaultController extends Controller
         $platform   = $connection->getDatabasePlatform();
 
         $connection->executeUpdate($platform->getTruncateTableSQL('RawItem', true /* whether to cascade */));
+        $connection->executeUpdate($platform->getTruncateTableSQL('TranslationItem', true /* whether to cascade */));
 
         $currentPage = 0;
         $count = 0;

@@ -23,15 +23,15 @@ class ItemController extends Controller
 
 
 
-        $item = $em->getRepository('UnoegohhEbayBundle:TranslationItem')->findOneBy(array('translated' => false,'currTrans' => false));
-        $item->setCurrTrans(true);
-
-        $rebro = $em->getRepository('UnoegohhEbayBundle:TranslationItem')->findBy(array('currTrans' => true));
-        foreach($rebro as $rebr){
-            $rebr->setCurrTrans(false);
-            $em->persist($rebr);
-            $em->flush();
-        }
+        $item = $em->getRepository('UnoegohhEbayBundle:TranslationItem')->findOneBy(array('translated' => false));
+//        $item->setCurrTrans(true);
+//
+//        $rebro = $em->getRepository('UnoegohhEbayBundle:TranslationItem')->findBy(array('currTrans' => true));
+//        foreach($rebro as $rebr){
+//            $rebr->setCurrTrans(false);
+//            $em->persist($rebr);
+//            $em->flush();
+//        }
 
         $em->persist($item);
         $em->flush();
@@ -86,9 +86,9 @@ class ItemController extends Controller
         $countDone = $qb->getQuery()->getSingleScalarResult();
 
 
-        $examples = $em->getRepository('UnoegohhEbayBundle:RawItem')->findByIName($item->getEngText());
-        $item = $em->getRepository('UnoegohhEbayBundle:TranslationItem')->findOneBy(array('translated' => false,'currTrans' => true));
+        $item = $em->getRepository('UnoegohhEbayBundle:TranslationItem')->findOneBy(array('translated' => false));
 
+        $examples = $em->getRepository('UnoegohhEbayBundle:RawItem')->findByIName($item->getEngText());
         $form = $this->createForm(new ItemType(), $item);
 
 

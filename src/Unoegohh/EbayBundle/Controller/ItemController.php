@@ -87,7 +87,7 @@ class ItemController extends Controller
 
 
         $examples = $em->getRepository('UnoegohhEbayBundle:RawItem')->findByIName($item->getEngText());
-        $item = $em->getRepository('UnoegohhEbayBundle:TranslationItem')->findOneBy(array('translated' => false,'currTrans' => false));
+        $item = $em->getRepository('UnoegohhEbayBundle:TranslationItem')->findOneBy(array('translated' => false,'currTrans' => true));
 
         $form = $this->createForm(new ItemType(), $item);
 

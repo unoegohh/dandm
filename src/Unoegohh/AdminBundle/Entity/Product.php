@@ -36,6 +36,11 @@ class Product
     protected $smallDesc;
 
     /**
+     * @ORM\Column(type="boolean",nullable=true)
+     */
+    protected $ebay;
+
+    /**
      * @ORM\Column(type="string",nullable=true)
      */
     protected $descr;
@@ -228,6 +233,16 @@ class Product
     public function getPhotoUrl()
     {
         return $this->photo_url;
+    }
+
+    public function setEbay($ebay)
+    {
+        $this->ebay = $ebay;
+    }
+
+    public function getEbay()
+    {
+        return $this->ebay;
     }
 
 

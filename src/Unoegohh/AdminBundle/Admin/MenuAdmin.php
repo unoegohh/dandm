@@ -36,6 +36,7 @@ class MenuAdmin extends Admin
             ->add('name')
             ->add('url', null , array('required' => false))
             ->add('position')
+            ->add('red_link')
             ->add('parent', 'sonata_type_model', array(
                 'required' => false,
                 'class'    => 'UnoegohhAdminBundle:Menu'

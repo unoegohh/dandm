@@ -52,7 +52,8 @@ class ItemController extends Controller
 
             foreach($rawItems as $rawItem){
                 $product = new Product();
-                $product->setPrice($rawItem->getPrice() * 32);
+                $product->setEbay(true);
+                $product->setPrice($rawItem->getPrice() * 32 + $rawItem->getPrice() * 32 * $this->container->getParameter('marja')/100);
                 $product->setPhotoUrl($rawItem->getLocalImg());
                 $numbers = array();
                 preg_match_all('/([0-9.\/]+ ?)+/',$rawItem->getName(), $numbers);

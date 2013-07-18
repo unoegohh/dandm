@@ -18,7 +18,7 @@ a
 #header
   width: 908px
   margin:  0 auto 0 auto
-  height: 75px
+  height: 90px
   #home_link
     color: #ec1f27
     padding: 20px 0 0 62px
@@ -30,7 +30,7 @@ a
     text-decoration: none
     font-weight: bold
     background: url(/images/logo.png) no-repeat
-    height: 55px
+    height: 65px
     width: 244px
   #phones
     padding: 10px 0 0 0
@@ -93,11 +93,13 @@ a
     text-align: left
     position: relative
     padding: 0 0 4px 0
+
+    &.current>a
+      color: $red
+      font-weight: bold
     a
       text-decoration: none
       color:  $grey
-      &.current
-        color: $red
       &:hover
         color: black
     ul
@@ -106,7 +108,6 @@ a
       top: 15px
       left: -6px
       background: white
-      width: 200px
     &:hover ul
       display: block
       padding: 5px

@@ -6,7 +6,7 @@
 {#<li><a href="/">КОНТАКТЫ</a></li>#}
 {#<li><a href="/">ОТЗЫВЫ</a></li>#}
 {% for menu in menuRender %}
-    <li><a href="/{{ menu.item.getUrl }}">{{ menu.item.getName }}</a>
+    <li {% if menu.red_link %}class="current"{% endif %}><a href="/{{ menu.item.getUrl }}">{{ menu.item.getName }}</a>
         {% if menu.child is defined %}
             <ul>
                 {% for subitem in menu.child %}

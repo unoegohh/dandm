@@ -37,6 +37,12 @@ class Menu
     protected $position;
 
     /**
+     * @ORM\Column(type="boolean",nullable=true)
+     *
+     */
+    protected $red_link;
+
+    /**
      * @ORM\ManyToOne(targetEntity="Menu", cascade={"all"})
      * @ORM\JoinColumn(name="parent_id", referencedColumnName="id")
      */
@@ -99,6 +105,16 @@ class Menu
     public function getUrl()
     {
         return $this->url;
+    }
+
+    public function setRedLink($red_link)
+    {
+        $this->red_link = $red_link;
+    }
+
+    public function getRedLink()
+    {
+        return $this->red_link;
     }
 
 

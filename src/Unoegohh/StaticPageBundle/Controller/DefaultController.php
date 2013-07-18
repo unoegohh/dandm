@@ -33,6 +33,7 @@ class DefaultController extends Controller
         foreach($menu as $item){
             if(!$item->getParent()){
                 $menuRender[$item->getId()]['position'] = $item->getPosition();
+                $menuRender[$item->getId()]['red_link'] = $item->getRedLink();
                 $menuRender[$item->getId()]['item'] = $item;
             }
         }

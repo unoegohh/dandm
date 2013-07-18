@@ -8,12 +8,12 @@ use SimpleXMLElement;
 use Unoegohh\EbayBundle\Entity\RawItem;
 use Unoegohh\EbayBundle\Entity\TranslationItem;
 use Doctrine\ORM\EntityManager;
+use Unoegohh\AdminBundle\Entity\Product;
 
 class DefaultController extends Controller
 {
     public function indexAction()
     {
-
 
         /**
          * @var $em EntityManager
@@ -22,7 +22,10 @@ class DefaultController extends Controller
         $connection = $em->getConnection();
         $platform   = $connection->getDatabasePlatform();
 
+        //todo delete only ebay items
+
         $connection->executeUpdate($platform->getTruncateTableSQL('RawItem', true /* whether to cascade */));
+        $connection->executeUpdate($platform->getTruncateTableSQL('Product', true /* whether to cascade */));
 
         $currentPage = 0;
         $count = 0;
@@ -67,6 +70,7 @@ class DefaultController extends Controller
                 $newItem->setPrice($item->sellingStatus->currentPrice);
 
 
+
                 $img_url = '/uploads/'. md5($item->pictureURLSuperSize) . '.png';
                 $newItem->setLocalImg($img_url);
                 $em->persist($newItem);
@@ -97,6 +101,27 @@ class DefaultController extends Controller
                     $em->persist($transItem);
                     $em->flush();
                     $newItemsCount++;
+                }
+                $search['translated'] = true;
+                $result = $em->getRepository('UnoegohhEbayBundle:TranslationItem')->findOneBy($search);
+                if($result){
+                    $product = new Product();
+                    $product->getEbay(true);
+                    $product->setPrice(ceil(($newItem->getPrice() * 32 + $newItem->getPrice() * 32 * $this->container->getParameter('marja')/100)/100) * 100);
+                    $product->setPhotoUrl($newItem->getLocalImg());
+                    $numbers = array();
+                    preg_match_all('/([0-9.\/]+ ?)+/',$newItem->getName(), $numbers);
+                    $title = $result->getRuText();
+                    foreach($numbers[0] as $number){
+                        $title = preg_replace('/\[\]/', $number, $title, 1);
+                    }
+                    $product->setName($title);
+                    $product->setCategory($result->getCategory());
+                    $product->setGoldType($result->GetGoldType());
+                    $product->setPosition(1);
+
+                    $em->persist($product);
+                    $em->flush();
                 }
             }
 

@@ -37,6 +37,7 @@ form:
     label_price: Цена
     label_discount: Цена со скидкой
     label_category: Категория
+    label_red_link: Подсветка меню красным
     label_photos: Фотографии
     label_position: Сортировка
     label_eng_name: Название категории на английском

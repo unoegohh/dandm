@@ -118,4 +118,8 @@ class Category
     {
         return $this->goldType;
     }
+    public function getFullUrl()
+    {
+        return '/catalog/' . $this->getEngName();
+    }
 }

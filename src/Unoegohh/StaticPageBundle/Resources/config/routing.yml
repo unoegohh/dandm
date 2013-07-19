@@ -2,6 +2,10 @@ unoegohh_static_page_homepage:
     pattern:  /
     defaults: { _controller: UnoegohhStaticPageBundle:Default:index }
 
+unoegohh_static_page_site_map:
+    pattern:  /sitemap
+    defaults: { _controller: UnoegohhStaticPageBundle:SiteMap:index }
+
 unoegohh_static_page_static:
     pattern:  /{url}
     defaults: { _controller: UnoegohhStaticPageBundle:Default:page }

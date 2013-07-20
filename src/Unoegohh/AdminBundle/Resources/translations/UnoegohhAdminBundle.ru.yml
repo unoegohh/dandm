@@ -32,6 +32,7 @@ form:
     label_content: Конетнт
     label_name: Название
     label_icon: Картинка
+    label_widget: Виджет с товарами
     label_small_desc: Маленькое описание
     label_descr: Описание
     label_price: Цена
@@ -56,6 +57,7 @@ show:
     label_descr: Описание
     label_price: Цена
     label_discount: Цена со скидкой
+    label_widget: Виджет с товарами
     label_category: Категория
     label_photos: Фотографии
     label_position: Сортировка
@@ -67,6 +69,7 @@ show:
 list:
     label_enabled: Спрятано
     label_title: Загаловок страницы
+    label_widget: Виджет с товарами
     label_url: Ссылка на страницу http://сайт/{ссылка}
     label_content: Конетнт
     label__action: Действия

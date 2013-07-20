@@ -35,9 +35,11 @@ class StaticPageAdmin extends Admin
     {
         $formMapper
             ->add('enabled', null, array('required' => false))
+            ->add('widget')
             ->add('title')
             ->add('url','text')
             ->add('content',null, array('attr' => array('class' => 'tinymce', 'tinymce'=>'{"theme":"simple"}'), 'required' => false))
+
         ;
     }
 

@@ -1,0 +1,20 @@
+<h2>Популярные товары</h2>
+<div id="widget">
+    {% for item in items %}
+        <div class="widget_item">
+            <a href="{{ path('unoegohh_shop_item_id',{'id': item.getId()}) }}">
+                <span>{{ item.price | number_format('0','',' ') }} р.</span>
+                {% if item.photos.galleryHasMedias %}
+                    {% for photo in item.photos.galleryHasMedias %}
+                        {% if loop.index == 1 %}
+                            {% media photo.getMedia, 'big' with {'title': photo.name} %}
+                        {% endif %}
+                    {% endfor %}
+                {% else %}
+                    <img src="{{ item.getPhotoUrl() }}" title="{{ item.name }}">
+                {% endif %}
+            </a>
+        </div>
+    {% endfor %}
+    <div class="clear"></div>
+</div>

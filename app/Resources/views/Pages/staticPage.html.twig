@@ -7,4 +7,8 @@
         {{ staticPage.title }}
     </h2>
     {{ staticPage.content | raw }}
+    <div class="clear"></div>
+    {% if staticPage.widget %}
+        {% render "UnoegohhShopBundle:Widget:index" %}
+    {% endif %}
 {% endblock %}

@@ -40,6 +40,12 @@ class StaticPage
 
     /**
      * @ORM\Column(type="boolean",nullable=true)
+     *
+     */
+    protected $widget;
+
+    /**
+     * @ORM\Column(type="boolean",nullable=true)
      */
     protected $enabled;
 
@@ -101,6 +107,16 @@ class StaticPage
     public function getUrl()
     {
         return $this->url;
+    }
+
+    public function setWidget($widget)
+    {
+        $this->widget = $widget;
+    }
+
+    public function getWidget()
+    {
+        return $this->widget;
     }
 
 
